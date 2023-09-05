@@ -10,9 +10,7 @@ data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>, 
     
     
     /**
-    fun matricular(usuario: Usuario) {
-        inscritos.add(usuario)
-    }
+    fun matricular(usuario: Usuario) { inscritos.add(usuario) }
     **/
     
     fun matricular(vararg usuarios: Usuario) = usuarios.forEach { inscritos.add(it) }
@@ -31,14 +29,12 @@ data class Formacao(val nome: String, var conteudos: List<ConteudoEducacional>, 
 fun main() {
 
     // Novos alunos
-	
     val usuario1 = Usuario("Lucas", 30)
     val usuario2 = Usuario("Nat", 28)
     val usuario3 = Usuario("Zion", 37)
     val usuario4 = Usuario("Mare", 23)
   
     // Conteúdo das formações
-    
     val conteudoKotlin: List<ConteudoEducacional> = listOf(
         ConteudoEducacional("Fundamentos Kotlin", 90),
         ConteudoEducacional("Kotlin na Prática", 60)
@@ -49,20 +45,17 @@ fun main() {
     )
     
     // Formações
-    
     val kotlin = Formacao("Formação Kotlin", conteudoKotlin, Nivel.BASICO)
     val mobileKotlin = Formacao("Formação Desenvolvimento Android Mobile", conteudoKotlinMobile, Nivel.INTERMEDIARIO)
     
 
     //Matricula de novos alunos
-
+	// Testando Vararg da função
     kotlin.matricular(usuario1, usuario2)
-    //kotlin.matricular(usuario2)
     mobileKotlin.matricular(usuario3)
     mobileKotlin.matricular(usuario4)
     
     //Listagem de alunos por formação
-
     println(kotlin.nome)
     println("Nivel: ${kotlin.nivel}")
     println("Conteúdo da Formação:")
